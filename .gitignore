@@ -1,0 +1,20 @@
+# Python
+*.pyc
+*.pyo
+__pycache__/
+env/
+venv/
+
+# Playwright
+.playwright/
+
+# Pytest
+.cache/
+
+# IDE settings (optional, depending on your editor)
+.vscode/
+.idea/
+
+# OS-specific
+.DS_Store
+Thumbs.db
