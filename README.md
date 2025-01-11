@@ -32,6 +32,7 @@ py -m playwright install
 ### Install pytest
 ```bash
 py -m pip install pytest
+```
 
 
 ## Recording Tests
