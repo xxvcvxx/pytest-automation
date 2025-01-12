@@ -39,3 +39,22 @@ def test_label_text(page, base_url_elements):
     # Assert
     expect_result_text = 'Some text for label'
     simple_elements.test_result_text(expect_result_text, actual_result_text)
+
+@pytest.mark.parametrize("click_times, expect_result_text",[
+    (1,'Checkbox is checked!'),
+    (2,'Checkbox is unchecked!'),
+])
+
+def test_checkbox_checked_text(page, base_url_elements,click_times,expect_result_text):
+     # Arrange
+    simple_elements = SimpleElementsPage(page)
+    page.goto(base_url_elements)
+
+    # Act
+    for _ in range(click_times):
+        simple_elements.click_checkbox()
+    actual_result_text = simple_elements.find_result_text()
+    
+    # Assert
+    simple_elements.test_result_text(expect_result_text, actual_result_text)
+    

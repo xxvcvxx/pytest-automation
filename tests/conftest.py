@@ -4,7 +4,7 @@ from playwright.sync_api import sync_playwright
 @pytest.fixture(scope="session")
 def browser():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)  # 'headless=False' - widoczna przeglądarka
+        browser = p.chromium.launch(headless=True)  # 'headless=False' - visible browser
         yield browser
         browser.close()
 

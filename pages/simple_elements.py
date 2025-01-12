@@ -7,12 +7,16 @@ class SimpleElementsPage:
         self.button_locator="#id-button-element"
         self.results_locator="#results"
         self.hover_event_locator="#id-tooltip-element"
+        self.checkbox_locator="#id-checkbox"
 
     def click_button(self):
         self.page.locator(self.button_locator).click()
 
     def hover_event(self):
         self.page.locator(self.hover_event_locator).hover()
+        
+    def click_checkbox(self):
+        self.page.locator(self.checkbox_locator).click()
 
     def find_result_text(self):
         locator=self.page.locator(self.results_locator)
