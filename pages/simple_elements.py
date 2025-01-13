@@ -50,8 +50,10 @@ class SimpleElementsPage:
         
     #Assert
 
-    def test_result_text(self,actual_text,expect_text):
+    def test_result_text(self,expect_text):
+        actual_text = self.find_result_text()
         assert actual_text == expect_text, f"Expected '{expect_text}', but got '{actual_text}'"
     
-    def test_label_text(selfself,actual_text,expect_text): # Assert method specific to label element for better clarity.
+    def test_label_text(self,expect_text): # Assert method specific to label element for better clarity.
+        actual_text = self.find_label_text()
         assert  actual_text == expect_text, f"Expected '{expect_text}', but got '{actual_text}'"
