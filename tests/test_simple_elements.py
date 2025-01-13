@@ -86,4 +86,39 @@ def test_input(page,base_url_elements):
     expect_result_text = f"Input value changed to: {sample_text}"
     simple_elements.test_result_text(expect_result_text, actual_result_text)
     
+@pytest.mark.parametrize("option_value, expect_result_text", [
+    ("option1", "Selected option: option1"),
+    ("option2", "Selected option: option2"),
+    ("option3", "Selected option: option3"),
+])
+
+def test_dropdown(page,base_url_elements,option_value,expect_result_text):
+    # Arrange
+    simple_elements = SimpleElementsPage(page)
+    page.goto(base_url_elements)
+    
+    # Act
+    simple_elements.select_option(option_value)
+    actual_result_text = simple_elements.find_result_text()
+    
+    # Assert
+    simple_elements.test_result_text(expect_result_text, actual_result_text)
+    
+@pytest.mark.parametrize("button_id, expect_result_text", [
+    ("1", "Radio Button 1 clicked!"),
+    ("2", "Radio Button 2 clicked!"),
+    ("3", "Radio Button 3 clicked!"),
+])
+
+def test_radio_buttons(page,base_url_elements,button_id,expect_result_text):
+    # Arrange
+    simple_elements = SimpleElementsPage(page)
+    page.goto(base_url_elements)
+    
+    #Act
+    simple_elements.select_radio_button(button_id)
+    actual_result_text = simple_elements.find_result_text()
+    
+    # Assert
+    simple_elements.test_result_text(expect_result_text, actual_result_text)
     

@@ -10,6 +10,8 @@ class SimpleElementsPage:
         self.checkbox_locator="#id-checkbox"
         self.input_locator="#id-input"
         self.textarea_locator="#id-textarea"
+        self.dropdown_locator="#id-dropdown"
+        self.radiobutton_locator="#id-radio"
 
     def click_button(self):
         self.page.locator(self.button_locator).click()
@@ -38,7 +40,14 @@ class SimpleElementsPage:
         locator.wait_for(state="visible",timeout=5000)
         return locator.text_content()
     
-    
+    def select_option(self, value: str):
+        locator=self.page.locator(self.dropdown_locator)
+        locator.select_option(value)
+        
+    def select_radio_button(self,value):
+        full_locator=f"{self.radiobutton_locator}{value}"
+        self.page.locator(full_locator).click()
+        
     #Assert
 
     def test_result_text(self,actual_text,expect_text):
