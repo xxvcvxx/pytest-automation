@@ -1,4 +1,5 @@
 import pytest
+import random
 import time
 from pages.simple_elements import SimpleElementsPage
 
@@ -49,7 +50,6 @@ def test_checkbox_checked_text(page, base_url_elements,click_times,expect_result
     for _ in range(click_times):
         simple_elements.click_checkbox()
 
-    
     # Assert
     simple_elements.test_result_text(expect_result_text)
     
@@ -113,3 +113,17 @@ def test_radio_buttons(page,base_url_elements,button_id,expect_result_text):
     # Assert
     simple_elements.test_result_text(expect_result_text)
     
+@pytest.mark.parametrize("value",[100,50,0])
+
+def test_slider_range(page,base_url_elements,value):
+    # Arrange
+    simple_elements = SimpleElementsPage(page)
+    page.goto(base_url_elements)
+    
+    #Act
+    #value=str(random.randint(0, 100))
+    simple_elements.range_slider_onchange_event(str(value))
+    
+    # Assert
+    expect_result_text = f'Range value changed to: {value}'
+    simple_elements.test_result_text(expect_result_text)

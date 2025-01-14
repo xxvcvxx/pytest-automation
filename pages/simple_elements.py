@@ -12,6 +12,7 @@ class SimpleElementsPage:
         self.textarea_locator="#id-textarea"
         self.dropdown_locator="#id-dropdown"
         self.radiobutton_locator="#id-radio"
+        self.slider_locator="#id-range"
 
     def click_button(self):
         self.page.locator(self.button_locator).click()
@@ -47,6 +48,10 @@ class SimpleElementsPage:
     def select_radio_button(self,value):
         full_locator=f"{self.radiobutton_locator}{value}"
         self.page.locator(full_locator).click()
+        
+    def range_slider_onchange_event(self,value):
+        locator=self.page.locator(self.slider_locator)
+        locator.fill(value)
         
     #Assert
 
