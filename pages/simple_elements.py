@@ -1,4 +1,5 @@
 from playwright.sync_api import Page
+from datetime import datetime, timedelta
 
 class SimpleElementsPage:
     def __init__(self, page:Page):
@@ -59,6 +60,7 @@ class SimpleElementsPage:
         locator.evaluate("document.querySelector('#id-date').showPicker()")
         self.page.keyboard.press("ArrowRight")
         self.page.keyboard.press("Enter")
+        return (datetime.now() + timedelta(days=1)).strftime("%Y-%m-%d")
         
     #Assert
 

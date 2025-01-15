@@ -135,11 +135,9 @@ def test_date_picker(page, base_url_elements):
     page.goto(base_url_elements)
     
     # Act
-    simple_elements.date_picker()  
-    formatted_date = (datetime.now() + timedelta(days=1)).strftime("%Y-%m-%d")
+    expect_result_text = f"Selected date: {simple_elements.date_picker()}"
 
     # Assert
-    expect_result_text = f"Selected date: {formatted_date}"  
     simple_elements.test_result_text(expect_result_text)
 
     
