@@ -2,6 +2,7 @@ import pytest
 import random
 import time
 from pages.simple_elements import SimpleElementsPage
+from datetime import datetime, timedelta
 
 def test_click_event(page, base_url_elements):
     # Arrange
@@ -127,3 +128,19 @@ def test_slider_range(page,base_url_elements,value):
     # Assert
     expect_result_text = f'Range value changed to: {value}'
     simple_elements.test_result_text(expect_result_text)
+    
+def test_date_picker(page, base_url_elements): 
+    # Arrange
+    simple_elements = SimpleElementsPage(page)
+    page.goto(base_url_elements)
+    
+    # Act
+    simple_elements.date_picker()  
+    formatted_date = (datetime.now() + timedelta(days=1)).strftime("%Y-%m-%d")
+
+    # Assert
+    expect_result_text = f"Selected date: {formatted_date}"  
+    simple_elements.test_result_text(expect_result_text)
+
+    
+    

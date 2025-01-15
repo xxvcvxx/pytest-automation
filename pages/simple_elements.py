@@ -13,6 +13,7 @@ class SimpleElementsPage:
         self.dropdown_locator="#id-dropdown"
         self.radiobutton_locator="#id-radio"
         self.slider_locator="#id-range"
+        self.data_picker_locator="#id-date"
 
     def click_button(self):
         self.page.locator(self.button_locator).click()
@@ -52,6 +53,12 @@ class SimpleElementsPage:
     def range_slider_onchange_event(self,value):
         locator=self.page.locator(self.slider_locator)
         locator.fill(value)
+        
+    def date_picker(self):
+        locator=self.page.locator(self.data_picker_locator)
+        locator.evaluate("document.querySelector('#id-date').showPicker()")
+        self.page.keyboard.press("ArrowRight")
+        self.page.keyboard.press("Enter")
         
     #Assert
 
