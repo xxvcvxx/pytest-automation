@@ -67,10 +67,9 @@ class SimpleElementsPage:
         self.page.locator(self.color_picker_locator).fill(color_value)
     
     def hexToRgb(self,hex):
-        # Usuń znak # jeśli jest
+        # From base_url/practice/js/practice-common.js
         hex = hex.lstrip('#')
         
-        # Przekształć wartości hex na RGB
         r = int(hex[0:2], 16)
         g = int(hex[2:4], 16)
         b = int(hex[4:6], 16)
