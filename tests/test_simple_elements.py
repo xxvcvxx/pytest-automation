@@ -140,5 +140,24 @@ def test_date_picker(page, base_url_elements):
     # Assert
     simple_elements.test_result_text(expect_result_text)
 
-    
+def test_color_picker(page, base_url_elements):
+    # Arrange
+    simple_elements = SimpleElementsPage(page)
+    page.goto(base_url_elements)
+
+    # Act
+    color_value = "#00ff00"  # Green
+    simple_elements.color_picker(color_value)
+    rgb_value = simple_elements.hexToRgb(color_value)
+
+    # Assert
+    expect_result_text = f"New selected color: {color_value} as hex and in RGB: {rgb_value}"
+    simple_elements.test_result_text(expect_result_text)
+
+
+
+
+
+
+
     

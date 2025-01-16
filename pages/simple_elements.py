@@ -14,7 +14,8 @@ class SimpleElementsPage:
         self.dropdown_locator="#id-dropdown"
         self.radiobutton_locator="#id-radio"
         self.slider_locator="#id-range"
-        self.data_picker_locator="#id-date"
+        self.date_picker_locator="#id-date"
+        self.color_picker_locator="#id-color"
 
     def click_button(self):
         self.page.locator(self.button_locator).click()
@@ -56,11 +57,25 @@ class SimpleElementsPage:
         locator.fill(value)
         
     def date_picker(self):
-        locator=self.page.locator(self.data_picker_locator)
+        locator=self.page.locator(self.date_picker_locator)
         locator.evaluate("document.querySelector('#id-date').showPicker()")
         self.page.keyboard.press("ArrowRight")
         self.page.keyboard.press("Enter")
         return (datetime.now() + timedelta(days=1)).strftime("%Y-%m-%d")
+    
+    def color_picker(self,color_value):
+        self.page.locator(self.color_picker_locator).fill(color_value)
+    
+    def hexToRgb(self,hex):
+        # Usuń znak # jeśli jest
+        hex = hex.lstrip('#')
+        
+        # Przekształć wartości hex na RGB
+        r = int(hex[0:2], 16)
+        g = int(hex[2:4], 16)
+        b = int(hex[4:6], 16)
+        
+        return f"rgb({r}, {g}, {b})"
         
     #Assert
 
