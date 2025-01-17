@@ -154,10 +154,27 @@ def test_color_picker(page, base_url_elements):
     expect_result_text = f"New selected color: {color_value} as hex and in RGB: {rgb_value}"
     simple_elements.test_result_text(expect_result_text)
 
+@pytest.mark.parametrize("hex_color,expected_rgb", [
+    ("#ff0000", "rgb(255, 0, 0)"),
+    ("#00ff00", "rgb(0, 255, 0)"),
+    ("#0000ff", "rgb(0, 0, 255)"),
+    ("#ffffff", "rgb(255, 255, 255)"),
+    ("#000000", "rgb(0, 0, 0)"),
+    ("#ffa500", "rgb(255, 165, 0)"),  
+    ("#800080", "rgb(128, 0, 128)"),  
+])
+def test_color_picker_with_parameters(page,base_url_elements,hex_color,expected_rgb):
 
+    # Arrange
+    simple_elements = SimpleElementsPage(page)
+    page.goto(base_url_elements)
 
+    # Act
+    simple_elements.color_picker(hex_color)
 
-
+    # Assert
+    expect_result_text = f"New selected color: {hex_color} as hex and in RGB: {expected_rgb}"
+    simple_elements.test_result_text(expect_result_text)
 
 
     
