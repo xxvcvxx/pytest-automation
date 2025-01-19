@@ -1,11 +1,14 @@
 import pytest
 from pages.simple_elements_without_id import SimpleElementsPageWithoutid
 
-def test_click_event(page, base_url_elements):
-    # Arrange
+@pytest.fixture
+def simple_elements_without_id(page, base_url_element_without_id):
     simple_elements_without_id = SimpleElementsPageWithoutid(page)
-    page.goto(base_url_elements)
-    
+    page.goto(base_url_element_without_id)
+    return simple_elements_without_id
+
+def test_click_event(simple_elements_without_id):
+
     # Act
     simple_elements_without_id.click_button()
 

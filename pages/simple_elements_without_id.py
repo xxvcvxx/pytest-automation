@@ -4,7 +4,7 @@ class SimpleElementsPageWithoutid:
     
     def __init__(self, page:Page):
         self.page=page
-        self.button_locator="//button[contains(@class, 'my-button')]"
+        self.button_locator=".my-button" #Xpath - //button[@class='my-button']
         self.results_locator="#results-container"
         
     def click_button(self):
