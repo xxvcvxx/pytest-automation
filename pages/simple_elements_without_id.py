@@ -4,10 +4,11 @@ class SimpleElementsPageWithoutid:
     
     def __init__(self, page:Page):
         self.page=page
-        self.button_locator=".my-button" #Xpath - //button[@class='my-button']
-        self.results_locator="#results-container"
-        self.hover_event_locator="label[onmouseover='labelOnMouseOver()']" #Xpath - //label[@onmouseover='labelOnMouseOver()']
-        self.input_locator=".my-input[type='text']" #xpath - self.input_locator = "//input[@class='my-input' and @type='text']"
+        self.button_locator = ".my-button" #Xpath - //button[@class='my-button']
+        self.results_locator = "#results-container"
+        self.hover_event_locator = "label[onmouseover='labelOnMouseOver()']" #Xpath - //label[@onmouseover='labelOnMouseOver()']
+        self.input_locator = ".my-input[type='text']" #xpath - self.input_locator = "//input[@class='my-input' and @type='text']"
+        self.checkbox_locator = "input[type='checkbox']"
         
     def click_button(self):
         self.page.locator(self.button_locator).click()
@@ -23,6 +24,9 @@ class SimpleElementsPageWithoutid:
         full_locator=f"input[value='radio{value}']"
         self.page.locator(full_locator).click()
  
+    def click_checkbox(self):
+        self.page.locator(self.checkbox_locator).click()
+    
      # Assert
         
     def test_result_text(self,expect_text):
@@ -30,3 +34,6 @@ class SimpleElementsPageWithoutid:
         locator.wait_for(state="visible",timeout=5000)
         actual_text = locator.text_content()
         assert actual_text == expect_text, f"Expected '{expect_text}', but got '{actual_text}'"
+        
+    
+    

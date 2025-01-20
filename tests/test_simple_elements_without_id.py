@@ -45,3 +45,18 @@ def test_radio_buttons(simple_elements_without_id, button_id, expect_result_text
     
     #Assert
     simple_elements_without_id.test_result_text(expect_result_text)
+    
+@pytest.mark.parametrize("click_times, expect_result_text",[ 
+    (1,'Checkbox is checked!'),
+    (2,'Checkbox is unchecked!'),
+])
+    
+def test_checkbox(simple_elements_without_id, click_times, expect_result_text):
+    
+    #Act 
+    for _ in range (click_times):
+        simple_elements_without_id.click_checkbox()
+        
+    #Assert
+    simple_elements_without_id.test_result_text(expect_result_text)
+    
