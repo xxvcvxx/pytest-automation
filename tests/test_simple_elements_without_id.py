@@ -32,3 +32,16 @@ def test_input_field_value_change(simple_elements_without_id):
     #Assert
     simple_elements_without_id.test_result_text("Input value changed to: AAA")
 
+@pytest.mark.parametrize("button_id, expect_result_text", [
+    ("1", "Radio Button 1 clicked!"),
+    ("2", "Radio Button 2 clicked!"),
+    ("3", "Radio Button 3 clicked!"),
+])
+    
+def test_radio_buttons(simple_elements_without_id, button_id, expect_result_text):
+
+    #Act
+    simple_elements_without_id.select_radio_button(button_id)
+    
+    #Assert
+    simple_elements_without_id.test_result_text(expect_result_text)

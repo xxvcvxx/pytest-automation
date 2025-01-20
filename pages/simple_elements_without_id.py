@@ -8,7 +8,6 @@ class SimpleElementsPageWithoutid:
         self.results_locator="#results-container"
         self.hover_event_locator="label[onmouseover='labelOnMouseOver()']" #Xpath - //label[@onmouseover='labelOnMouseOver()']
         self.input_locator=".my-input[type='text']" #xpath - self.input_locator = "//input[@class='my-input' and @type='text']"
-
         
     def click_button(self):
         self.page.locator(self.button_locator).click()
@@ -20,6 +19,10 @@ class SimpleElementsPageWithoutid:
         self.page.locator(self.input_locator).fill(text)
         self.page.locator("body").click()
         
+    def select_radio_button(self, value):
+        full_locator=f"input[value='radio{value}']"
+        self.page.locator(full_locator).click()
+ 
      # Assert
         
     def test_result_text(self,expect_text):
