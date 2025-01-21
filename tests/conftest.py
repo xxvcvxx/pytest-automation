@@ -22,6 +22,10 @@ def base_url_elements(base_url):
 def base_url_element_without_id(base_url):
     return f"{base_url}/simple-elements-no-ids.html"
 
+@pytest.fixture(scope="session")
+def base_url_element_disabled(base_url):
+    return f"{base_url}/disabled-elements-1.html"
+
 @pytest.fixture(scope="function")
 def page(browser):
     page = browser.new_page()
