@@ -118,10 +118,16 @@ def test_color_picker(simple_elements):
     ("#800080", "rgb(128, 0, 128)"),  
 ])
 def test_color_picker_with_parameters(simple_elements, hex_color, expected_rgb):
-
     # Act
     simple_elements.color_picker(hex_color)
 
     # Assert
     expect_result_text = f"New selected color: {hex_color} as hex and in RGB: {expected_rgb}"
     simple_elements.test_result_text(expect_result_text)
+    
+def test_checkbox_toggle_and_check(simple_elements):
+    # Act
+    simple_elements.click_checkbox()
+    
+    # Asset
+    simple_elements.test_checkbox_is_checked()

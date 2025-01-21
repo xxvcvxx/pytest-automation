@@ -1,4 +1,4 @@
-from playwright.sync_api import Page
+from playwright.sync_api import Page, expect
 from datetime import datetime, timedelta
 
 class SimpleElementsPage:
@@ -82,6 +82,12 @@ class SimpleElementsPage:
         actual_text = self.find_result_text()
         assert actual_text == expect_text, f"Expected '{expect_text}', but got '{actual_text}'"
     
-    def test_label_text(self,expect_text): # Assert method specific to label element for better clarity.
-        actual_text = self.find_label_text()
-        assert  actual_text == expect_text, f"Expected '{expect_text}', but got '{actual_text}'"
+    def test_label_text(self,expect_text): 
+        #actual_text = self.find_label_text()
+        #assert  actual_text == expect_text, f"Expected '{expect_text}', but got '{actual_text}'"
+        expect(self.page.locator(self.label_text_locator)).to_have_text(expect_text)
+        
+    def test_checkbox_is_checked(self):
+        locator = self.page.locator(self.checkbox_locator)
+        expect(locator).to_be_checked()
+       
